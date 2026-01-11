@@ -57,8 +57,12 @@ test:
     - pip check
     - abi3audit $SP_DIR/fast_plscan/_api.abi3.so -s -v --assume-minimum-abi3 3.12   # [unix and py >= 312]
     - abi3audit %SP_DIR%/fast_plscan/_api.pyd -s -v --assume-minimum-abi3 3.12      # [win  and py >= 312]
+    - pytest . -k "not test_plots"  # plot tests are unstable and verified in github builds
+  source_files:
+    - tests
   requires:
     - pip
+    - pytest
     - abi3audit                               # [py >= 312]
 
 about:
